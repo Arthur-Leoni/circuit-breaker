@@ -1,0 +1,23 @@
+server:
+  port : 8081
+
+error:
+  include-stacktrace: true
+
+spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+resilience4j.circuitbreaker:
+  instances:
+    CircuitBreakerService:
+       minimum-number-of-calls: 4 #//Configures the minimum number of calls which are required (per sliding window period) before the CircuitBreaker can calculate the error rate or slow call rate.
+       slidingWindowSize: 8 #//Configures the size of the sliding window which is used to record the outcome of calls when the CircuitBreaker is closed.
+#      failure-rate-threshold: 50 //To configure ba rate
+#      minimum-number-of-calls: 5 // Configures the minimum number of calls which are required
+#      automatic-transition-from-open-to-half-open-enabled: true //automatically transition from open to half-open state
+#      wait-duration-in-open-state: 5s // The time that the CircuitBreaker should wait before transitioning from open to half-open.
+#      permitted-number-of-calls-in-half-open-state: 3
+#      sliding-window-size: 10
+#      sliding-window-type: count_based
